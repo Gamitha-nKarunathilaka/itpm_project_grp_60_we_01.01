@@ -84,14 +84,9 @@
               
             </thead>
             <tbody>
-                @foreach ($admins as $row )
-                <td>{{ $row->id}}</td>
-                <td>{{ $row->Problam}}</td>
-                <td>{{ $row->Solution}}</td>
-                <td>{{ $row->Risk}}</td>
-                <td></td>
-                <td></td>
-                @endforeach
+              
+            
+             
               <tr>
                 <th scope="row">1</th>
                 <td></td>
