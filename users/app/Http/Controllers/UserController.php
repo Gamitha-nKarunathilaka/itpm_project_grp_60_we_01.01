@@ -8,6 +8,8 @@ class UserController extends Controller
 {
   public function showLoginForm(Request $request)
    {
+    return view('auth.login');
+    
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',

@@ -26,9 +26,9 @@ Route::prefix('admin')->middleware(['auth:admin', 'admin'])->group(function () {
 
 // routes/web.php
 
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
+//Route::get('/login', function () {
+//    return view('auth.login');
+//})->name('login');
 
 
 // Registration Routes...
