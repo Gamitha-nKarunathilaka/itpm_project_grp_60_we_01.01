@@ -1,27 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 class AdminController extends Controller
 {
-    public function login(Request $request)
- {
-    $credentials = $request->validate([
-        'email' => 'required|email',
-        'password' => 'required',
-    ]);
-
-    if (Auth::guard('admin')->attempt($credentials)) {
-        $request->session()->regenerate();
-
-        // Redirect to admin dashboard
-        return redirect()->intended('admin/dashboard');
+    /**
+     * Show the dashboard for the admin user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dashboard()
+    {
+        return view('admin.dashboard');
     }
-
-    return back()->withErrors([
-        'email' => 'The provided credentials do not match our records.',
-    ]);
- }
 }
