@@ -17,3 +17,4 @@ Route::get('/register', function () {
 
 Route::post('login',[LoginController::class,'indexlogin']);
 Route::view("login","login");
+Route::view("view","view");
