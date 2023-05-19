@@ -5,6 +5,8 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
             <!-- Add more table headers for each column you want to display -->
         </tr>
     </thead>
@@ -13,7 +15,8 @@
             <tr>
                 <td>{{ $data->id }}</td>
                 <td>{{ $data->name}}</td>
-                <!-- Add more table cells for each column you want to display -->
+                <td>{{ $data->email}}</td>
+                <td>{{ $data->address}}</td>
             </tr>
         @endforeach
     </tbody>
