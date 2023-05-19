@@ -149,5 +149,13 @@ class UserController extends Controller
  
          return redirect()->route('form.step4', $formData->id);
      }
+
+     //Retrieve function
+     public function FetchFormData()
+     {
+         $formData = FormData::all();
+ 
+         return view('user.dashboard', ['formData' => $formData]);
+     }
  
 }
