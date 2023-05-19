@@ -36,3 +36,5 @@ Route::post('/form/step3', [usercontroller::class, 'postStep3'])->name('form.ste
 
 Route::get('/form/step4/{id}', [usercontroller::class, 'step4'])->name('form.step4');
 Route::post('/form/step4', [usercontroller::class, 'postStep4'])->name('form.step4.post');
+
+Route::get('/user/dashboard', [usercontroller::class, 'FetchFormData']);
