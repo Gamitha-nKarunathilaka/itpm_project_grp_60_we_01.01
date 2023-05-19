@@ -7,6 +7,8 @@
             <th>Name</th>
             <th>Email</th>
             <th>Address</th>
+            <th>Number</th>
+            <th>Occupation</th>
             <!-- Add more table headers for each column you want to display -->
         </tr>
     </thead>
@@ -17,6 +19,8 @@
                 <td>{{ $data->name}}</td>
                 <td>{{ $data->email}}</td>
                 <td>{{ $data->address}}</td>
+                <td>{{ $data->contact_num}}</td>
+                <td>{{ $data->occupation}}</td>
             </tr>
         @endforeach
     </tbody>
