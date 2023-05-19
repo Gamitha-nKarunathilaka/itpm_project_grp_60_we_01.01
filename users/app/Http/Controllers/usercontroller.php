@@ -13,7 +13,6 @@ class UserController extends Controller
     public function dashboard(Request $request)
     {
         $user = auth()->user();
-        Notification::send($user, new NewUserNotification());
 
         return view('user.dashboard');
     }
