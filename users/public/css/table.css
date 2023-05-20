@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+p {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    color: black;
+    /*43D717*/
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    color: #fff !important;
+    background-color: #007bff !important;
+    border: 1px solid #007bff !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    color: #fff !important;
+    background-color: #0069d9 !important;
+    border: 1px solid #0069d9 !important;
+}
+
+.custom-header {
+    background-color: #E1ECDD;
+}
+
+.black-link {
+    color: black;
+}
+
+#userTable td {
+    font-size: 13px; 
+    font-weight: bold; 
+    background-color: white;
+    color:#3C4740  ;
+    padding: 3px;
+}
+
+#userTable tr {
+    line-height: normal;
+}

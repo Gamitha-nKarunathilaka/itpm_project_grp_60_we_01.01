@@ -97,7 +97,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="authorized_per_name" class="col-md-4 col-form-label text-md-end">{{ __('Authorized Person Contact Number') }}</label>
+                            <label for="authorized_per_name" class="col-md-4 col-form-label text-md-end">{{ __('Authorized Person Name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="authorized_per_name" type="text" class="form-control @error('authorized_per_name') is-invalid @enderror" name="authorized_per_name" value="{{ old('authorized_per_name') }}" required autocomplete="authorized_per_name">

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\userController;
 use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
@@ -22,7 +22,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //});
 
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-Route::get('/user/dashboard', [usercontroller::class, 'dashboard'])->name('user.dashboard');
+//Route::get('/user/dashboard', [usercontroller::class, 'dashboard'])->name('user.dashboard');
 
 //multi stepper form
 Route::get('/form/step1', [usercontroller::class, 'step1'])->name('form.step1');
@@ -37,4 +37,12 @@ Route::post('/form/step3', [usercontroller::class, 'postStep3'])->name('form.ste
 Route::get('/form/step4/{id}', [usercontroller::class, 'step4'])->name('form.step4');
 Route::post('/form/step4', [usercontroller::class, 'postStep4'])->name('form.step4.post');
 
-Route::get('/user/dashboard', [usercontroller::class, 'FetchFormData']);
+Route::get('/user/dashboard', [usercontroller::class, 'FetchFormData'])->name('user.dashboard');
+
+//View model
+Route::get('/user/{id}', [usercontroller::class, 'getUserData']);
+//Edit model
+Route::get('/user/{id}/edit', [usercontroller::class, 'edit'])->name('user.edit');
+Route::put('/user/{id}', [usercontroller::class, 'update'])->name('user.update');
+//Delete model
+Route::delete('/user/{id}', [usercontroller::class, 'delete'])->name('user.delete');
