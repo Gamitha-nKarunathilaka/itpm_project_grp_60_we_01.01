@@ -151,11 +151,101 @@ class UserController extends Controller
      }
 
      //Retrieve function
-     public function FetchFormData()
+     public function FetchFormData(Request $request)
      {
+         if ($request->ajax()) {
+             $formData = FormData::select('id', 'name', 'email', 'address', 'contact_num','city','Status');
+     
+             if ($request->has('search') && !empty($request->input('search')['value'])) {
+                 $searchValue = $request->input('search')['value'];
+                 $formData->where(function ($query) use ($searchValue) {
+                     $query->where('name', 'like', '%' . $searchValue . '%')
+                         ->orWhere('email', 'like', '%' . $searchValue . '%')
+                         // Add more columns as necessary for searching
+                         ->orWhere('address', 'like', '%' . $searchValue . '%');
+                 });
+             }
+     
+             $formData = $formData->get();
+     
+             return datatables()->of($formData)
+                 ->addIndexColumn()
+                 ->addColumn('action', function ($row) {
+                     $btn = '<a href="javascript:void(0)" class="btn btn-primary btn-sm">View</a>';
+                     return $btn;
+                 })
+                 ->rawColumns(['action'])
+                 ->make(true);
+         }
+     
          $formData = FormData::all();
- 
-         return view('user.dashboard', ['formData' => $formData]);
+     
+         return view('user.dashboard', compact('formData'));
      }
+
+     public function getUserData($id)
+     {
+         // Retrieve user data based on the ID
+         $user = FormData::findOrFail($id);
  
+         // Prepare the data to be sent as a JSON response
+         $responseData = [
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'address' => $user->address,
+            'contact_num' => $user->contact_num,
+            'city' => $user->city,
+            'beaf' => $user->beaf,
+            'expect_soluation' => $user->expect_soluation,
+            'photo' => $user->photo,
+            'problem_level' => $user->problem_level,
+            'suggestions' => $user->suggestions,
+            'district' => $user->district,
+            'postal_code' => $user->postal_code,
+            'grama_name' => $user->grama_name,
+            'gcontact_num' => $user->gcontact_num,
+            'authorized_per_name' => $user->authorized_per_name,
+            'authorized_per_num' => $user->authorized_per_num,
+            'Status' => $user->Status,
+         ];
+ 
+         // Return the data as JSON
+         return response()->json(['formData' => $responseData]);
+     }
+
+        //UPDATE USER PROJECT DETAILS
+        public function edit($id)
+            {
+                $user = FormData::find($id);
+                return response()->json([
+                    'formData' => $user
+                ]);
+            }
+
+            public function update(Request $request, $id)
+            {
+                $validatedData = $request->validate([
+                    'name' => 'required',
+                    'authorized_per_num' => 'required'
+                    
+                ]);
+
+                $user = FormData::findOrFail($id);
+                $user->name = $validatedData['name'];
+                $user->authorized_per_num = $validatedData['authorized_per_num'];
+                $user->save();
+
+                return response()->json(['message' => 'User updated successfully']);
+            }
+
+    //DELETE FUNCTION
+    public function delete($id)
+    {
+        $user = FormData::findOrFail($id);
+        $user->delete();
+
+        return response()->json(['message' => 'User deleted successfully']);
+    }
+
 }
